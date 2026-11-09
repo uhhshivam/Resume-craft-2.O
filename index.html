@@ -1,0 +1,1014 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ResumeCraft is a free online resume builder. Create professional resumes, customize templates and download PDF resumes.">
+<meta name="theme-color" content="#173b70">
+<title>ResumeCraft | Free Professional Resume Builder</title>
+
+<style>
+:root {
+  --primary:#2457d6;
+  --dark:#14213d;
+  --muted:#697586;
+  --light:#f4f7fc;
+  --border:#e1e7f0;
+  --white:#fff;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  font-family:Arial,sans-serif;
+  color:var(--dark);
+  background:var(--light);
+  line-height:1.6;
+}
+
+button,input,textarea,select { font:inherit; }
+
+button { cursor:pointer; }
+
+header {
+  background:white;
+  border-bottom:1px solid var(--border);
+  padding:15px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo {
+  font-size:25px;
+  font-weight:800;
+  color:var(--primary);
+}
+
+.logo span { color:var(--dark); }
+
+nav { display:flex; gap:17px; flex-wrap:wrap; }
+
+nav a {
+  color:var(--dark);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+}
+
+.hero {
+  text-align:center;
+  padding:55px 15px 35px;
+  background:linear-gradient(135deg,#eaf1ff,#fff);
+}
+
+.hero h1 {
+  font-size:clamp(30px,5vw,47px);
+  line-height:1.2;
+  margin-bottom:13px;
+}
+
+.hero h1 span { color:var(--primary); }
+
+.hero p {
+  color:var(--muted);
+  max-width:650px;
+  margin:auto;
+}
+
+.hero-tag {
+  display:inline-block;
+  background:#dce8ff;
+  color:#1745a5;
+  border-radius:30px;
+  padding:6px 15px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.container {
+  max-width:1400px;
+  margin:auto;
+  padding:25px 16px;
+}
+
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.topbar h2 { font-size:23px; }
+
+.workspace {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:22px;
+  align-items:start;
+}
+
+.panel {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:22px;
+  box-shadow:0 4px 18px rgba(20,33,61,.04);
+}
+
+.panel h2 {
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+.section-title {
+  font-size:16px;
+  font-weight:bold;
+  border-bottom:1px solid var(--border);
+  padding-bottom:8px;
+  margin:23px 0 13px;
+}
+
+label {
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+input,textarea,select {
+  width:100%;
+  border:1px solid #d6deeb;
+  border-radius:7px;
+  padding:11px;
+  margin-bottom:13px;
+  background:white;
+  color:var(--dark);
+  font-size:14px;
+}
+
+input:focus,textarea:focus,select:focus {
+  outline:2px solid #c6d6ff;
+  border-color:var(--primary);
+}
+
+textarea {
+  min-height:85px;
+  resize:vertical;
+}
+
+button {
+  border:0;
+  border-radius:7px;
+  padding:11px 16px;
+  background:var(--primary);
+  color:white;
+  font-weight:bold;
+  font-size:13px;
+}
+
+button:hover { opacity:.9; }
+
+button:disabled {
+  opacity:.6;
+  cursor:wait;
+}
+
+.secondary {
+  background:#eaf0ff;
+  color:var(--primary);
+}
+
+.danger {
+  background:#fff0f0;
+  color:#bd3434;
+}
+
+.add-btn {
+  width:100%;
+  margin:5px 0 12px;
+  background:#edf3ff;
+  color:var(--primary);
+  border:1px dashed #8ca9ed;
+}
+
+.entry {
+  padding:13px;
+  background:#f8faff;
+  border:1px solid var(--border);
+  border-radius:9px;
+  margin-bottom:12px;
+}
+
+.entry-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.grid2 {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.photo-note {
+  color:var(--muted);
+  font-size:11px;
+  margin-top:-7px;
+  margin-bottom:12px;
+}
+
+.action-row {
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+.preview-panel {
+  position:sticky;
+  top:85px;
+}
+
+.preview-controls {
+  margin-bottom:15px;
+}
+
+.resume {
+  background:white;
+  color:#273247;
+  min-height:700px;
+  padding:38px;
+  border:1px solid var(--border);
+  overflow-wrap:anywhere;
+}
+
+.resume-header {
+  border-bottom:3px solid var(--primary);
+  padding-bottom:17px;
+  margin-bottom:22px;
+  display:flex;
+  gap:17px;
+  align-items:center;
+}
+
+.resume-header h1 {
+  font-size:29px;
+  line-height:1.2;
+  color:#14213d;
+}
+
+.resume-header .job {
+  font-size:14px;
+  margin:5px 0;
+  color:#53627a;
+}
+
+.resume-contact {
+  font-size:11px;
+  color:#657087;
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px 12px;
+}
+
+.profile-photo {
+  width:95px;
+  height:95px;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #e2eaff;
+  display:none;
+}
+
+.resume-section {
+  margin-bottom:20px;
+  break-inside:avoid;
+}
+
+.resume-section h3 {
+  color:var(--primary);
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  border-bottom:1px solid #dce3f0;
+  padding-bottom:6px;
+  margin-bottom:10px;
+}
+
+.resume-section p {
+  font-size:12px;
+  white-space:pre-line;
+}
+
+.resume-item {
+  margin-bottom:13px;
+  break-inside:avoid;
+}
+
+.resume-item strong { font-size:13px; }
+
+.resume-item small {
+  display:block;
+  color:#667085;
+  font-size:11px;
+}
+
+.resume-item p { margin-top:4px; }
+
+.resume-section ul {
+  padding-left:18px;
+  font-size:12px;
+}
+
+.resume-section li { margin-bottom:4px; }
+
+.empty {
+  color:#9aa4b2;
+  font-style:italic;
+}
+
+#resume.classic {
+  font-family:Georgia,serif;
+  color:#222;
+}
+
+#resume.classic .resume-header {
+  display:block;
+  text-align:center;
+  border-bottom:2px solid #222;
+}
+
+#resume.classic .resume-header h1,
+#resume.classic .resume-section h3 {
+  color:#222;
+}
+
+#resume.classic .profile-photo {
+  margin:0 auto 12px;
+}
+
+#resume.executive .resume-header {
+  background:#17365d;
+  color:white;
+  padding:24px;
+  border-bottom:5px solid #8da7c7;
+}
+
+#resume.executive .resume-header h1,
+#resume.executive .resume-header .job,
+#resume.executive .resume-header .resume-contact {
+  color:white;
+}
+
+#resume.executive .resume-section h3 {
+  color:#17365d;
+  border-bottom:2px solid #17365d;
+}
+
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin:20px 0 35px;
+}
+
+.feature {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px;
+}
+
+.feature h3 { font-size:15px; margin-bottom:5px; }
+.feature p { color:var(--muted); font-size:12px; }
+
+.info-section {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:24px;
+  margin-top:20px;
+}
+
+.info-section h2 { margin-bottom:10px; }
+.info-section p { color:var(--muted); font-size:14px; }
+
+footer {
+  background:#14213d;
+  color:white;
+  padding:30px 15px;
+  text-align:center;
+  margin-top:35px;
+}
+
+footer p { font-size:12px; color:#cbd5e1; }
+
+footer a {
+  color:white;
+  margin:0 8px;
+  font-size:13px;
+}
+
+@media(max-width:900px) {
+  .workspace { grid-template-columns:1fr; }
+  .preview-panel { position:static; }
+}
+
+@media(max-width:600px) {
+  header { padding:13px 4%; }
+  .logo { font-size:22px; }
+  nav { gap:10px; }
+  nav a { font-size:11px; }
+  .hero { padding:38px 14px 25px; }
+  .panel { padding:15px; }
+  .resume { padding:22px; }
+  .resume-header h1 { font-size:23px; }
+  .grid2 { grid-template-columns:1fr; }
+  .features { grid-template-columns:1fr; }
+}
+
+@media print {
+  @page { size:A4; margin:12mm; }
+
+  body { background:white; }
+
+  header,.hero,.topbar,#editor,footer,
+  .features,.info-section,.preview-controls,
+  .preview-panel>h2,.preview-panel>.preview-note {
+    display:none!important;
+  }
+
+  .container,.workspace,.preview-panel,.panel {
+    display:block;
+    max-width:none;
+    margin:0;
+    padding:0;
+    border:0;
+    box-shadow:none;
+  }
+
+  .resume {
+    border:0;
+    padding:0;
+    min-height:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Resume<span>Craft</span></div>
+  <nav>
+    <a href="#builder">Builder</a>
+    <a href="#features">Features</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-tag">100% Free Resume Builder</div>
+  <h1>Build Your <span>Professional Resume</span></h1>
+  <p>Create a polished resume in minutes. Add your details, choose a template, preview your work and download your PDF.</p>
+</section>
+
+<main class="container" id="builder">
+
+<div class="topbar">
+  <h2>Resume Builder</h2>
+  <button class="secondary" type="button" onclick="saveDraft()">Save Draft</button>
+</div>
+
+<div class="workspace">
+
+<section class="panel" id="editor">
+  <h2>Your Information</h2>
+
+  <div class="section-title">Personal Information</div>
+
+  <label for="name">Full Name</label>
+  <input id="name" placeholder="Your full name">
+
+  <label for="job">Professional Title</label>
+  <input id="job" placeholder="e.g. Software Developer">
+
+  <div class="grid2">
+    <div>
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="you@email.com">
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input id="phone" type="tel" placeholder="+91 9876543210">
+    </div>
+  </div>
+
+  <label for="location">Location</label>
+  <input id="location" placeholder="City, Country">
+
+  <label for="website">LinkedIn / Portfolio</label>
+  <input id="website" placeholder="Profile or website URL">
+
+  <label for="photo">Profile Photo (Optional)</label>
+  <input id="photo" type="file" accept="image/*">
+  <p class="photo-note">Use a clear, professional photograph if you want one.</p>
+
+  <div class="section-title">Professional Summary</div>
+  <textarea id="summary" placeholder="Write a short introduction about your experience, strengths and career goals."></textarea>
+
+  <div class="section-title">Education</div>
+  <div id="education-list"></div>
+  <button class="add-btn" type="button" onclick="addEntry('education')">+ Add Education</button>
+
+  <div class="section-title">Work Experience</div>
+  <div id="experience-list"></div>
+  <button class="add-btn" type="button" onclick="addEntry('experience')">+ Add Experience</button>
+  <p class="photo-note">Freshers can leave this section empty.</p>
+
+  <div class="section-title">Skills</div>
+  <textarea id="skills" placeholder="HTML, CSS, JavaScript, Communication, Teamwork..."></textarea>
+  <p class="photo-note">Separate skills with commas.</p>
+
+  <div class="section-title">Projects & Achievements</div>
+  <div id="projects-list"></div>
+  <button class="add-btn" type="button" onclick="addEntry('projects')">+ Add Project</button>
+
+  <div class="action-row">
+    <button type="button" onclick="downloadPDF()">Download PDF</button>
+    <button type="button" class="secondary" onclick="saveDraft()">Save Draft</button>
+    <button type="button" class="danger" onclick="clearForm()">Clear All</button>
+  </div>
+</section>
+
+<section class="panel preview-panel">
+  <h2>Live Resume Preview</h2>
+
+  <div class="preview-controls">
+    <label for="template">Choose Template</label>
+    <select id="template">
+      <option value="modern">Modern Blue</option>
+      <option value="classic">Classic</option>
+      <option value="executive">Executive</option>
+    </select>
+  </div>
+
+  <p class="preview-note photo-note">Your resume updates automatically as you type.</p>
+
+  <article class="resume" id="resume">
+
+    <div class="resume-header">
+      <img id="preview-photo" class="profile-photo" alt="Profile photo">
+      <div>
+        <h1 id="p-name">Your Name</h1>
+        <div class="job" id="p-job">Your Professional Title</div>
+        <div class="resume-contact" id="p-contact">Email · Phone · Location</div>
+      </div>
+    </div>
+
+    <section class="resume-section" id="summary-section">
+      <h3>Professional Summary</h3>
+      <p id="p-summary" class="empty">Your professional summary will appear here.</p>
+    </section>
+
+    <section class="resume-section" id="education-section">
+      <h3>Education</h3>
+      <div id="p-education" class="empty">Your education will appear here.</div>
+    </section>
+
+    <section class="resume-section" id="experience-section">
+      <h3>Work Experience</h3>
+      <div id="p-experience" class="empty">Your experience will appear here.</div>
+    </section>
+
+    <section class="resume-section" id="skills-section">
+      <h3>Skills</h3>
+      <div id="p-skills" class="empty">Your skills will appear here.</div>
+    </section>
+
+    <section class="resume-section" id="projects-section">
+      <h3>Projects & Achievements</h3>
+      <div id="p-projects" class="empty">Your projects will appear here.</div>
+    </section>
+
+  </article>
+
+  <div class="action-row">
+    <button type="button" onclick="downloadPDF()">Download PDF</button>
+  </div>
+</section>
+
+</div>
+
+<section class="features" id="features">
+  <div class="feature">
+    <h3>✍️ Easy Editing</h3>
+    <p>Enter your information in a simple form and see your resume update instantly.</p>
+  </div>
+  <div class="feature">
+    <h3>🎨 Professional Templates</h3>
+    <p>Choose between modern, classic and executive resume designs.</p>
+  </div>
+  <div class="feature">
+    <h3>📄 PDF Download</h3>
+    <p>Download your resume as a PDF file for job applications.</p>
+  </div>
+</section>
+
+<section class="info-section" id="about">
+  <h2>About ResumeCraft</h2>
+  <p>ResumeCraft is a free resume creation tool designed to help students, freshers and experienced professionals create clear, professional resumes. Build your resume, customize its design and download a copy for your career journey.</p>
+</section>
+
+<section class="info-section" id="contact">
+  <h2>Contact</h2>
+  <p>For questions or website feedback, contact the website owner through the contact details provided by the site publisher.</p>
+</section>
+
+<section class="info-section" id="privacy">
+  <h2>Privacy Policy</h2>
+  <p>Your resume information is processed in your browser. Drafts can be saved in your browser's local storage. Information saved in your browser is not automatically sent to ResumeCraft. Avoid using public or shared devices for private resume information, and clear saved drafts when finished.</p>
+  <p>Third-party services, such as the PDF generation library, may load from their own providers. If advertising is added in the future, the privacy policy must be updated to explain the advertising and data practices.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="logo">Resume<span style="color:white">Craft</span></div>
+  <p>Build your future, one resume at a time.</p>
+  <p style="margin-top:10px">
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#privacy">Privacy Policy</a>
+  </p>
+  <p style="margin-top:12px">© 2026 ResumeCraft. All rights reserved.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.3/html2pdf.bundle.min.js"></script>
+
+<script>
+const simpleFields = [
+  "name","job","email","phone","location","website","summary","skills"
+];
+
+let photoData = "";
+
+const entryConfig = {
+  education: [
+    ["degree","Qualification or Degree"],
+    ["school","School or College"],
+    ["year","Year or Duration"],
+    ["details","Additional Details"]
+  ],
+  experience: [
+    ["position","Job Title"],
+    ["company","Company"],
+    ["duration","Duration"],
+    ["details","Responsibilities and Achievements"]
+  ],
+  projects: [
+    ["title","Project or Achievement Name"],
+    ["duration","Date or Duration"],
+    ["details","Description"]
+  ]
+};
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  })[c]);
+}
+
+function getValue(id) {
+  return document.getElementById(id).value.trim();
+}
+
+function addEntry(type, values = {}) {
+  const container = document.getElementById(type + "-list");
+  const number = container.children.length + 1;
+  const box = document.createElement("div");
+  box.className = "entry";
+
+  let html = `
+    <div class="entry-heading">
+      <span>${type.charAt(0).toUpperCase()+type.slice(1)} ${number}</span>
+      <button type="button" class="danger" onclick="this.closest('.entry').remove();renumberEntries('${type}');updateResume()">Remove</button>
+    </div>
+  `;
+
+  entryConfig[type].forEach(([key,label]) => {
+    const id = type + "-" + key + "-" + Date.now() + "-" + Math.random().toString(36).slice(2,7);
+    const value = escapeHTML(values[key] || "");
+
+    if (key === "details") {
+      html += `<label>${label}</label><textarea data-key="${key}" placeholder="${label}">${value}</textarea>`;
+    } else {
+      html += `<label>${label}</label><input data-key="${key}" value="${value}" placeholder="${label}">`;
+    }
+  });
+
+  box.innerHTML = html;
+  container.appendChild(box);
+
+  box.querySelectorAll("input,textarea").forEach(input => {
+    input.addEventListener("input",updateResume);
+  });
+
+  updateResume();
+}
+
+function renumberEntries(type) {
+  const entries = document.querySelectorAll("#" + type + "-list .entry");
+  entries.forEach((entry,index) => {
+    entry.querySelector(".entry-heading span").textContent =
+      type.charAt(0).toUpperCase()+type.slice(1)+" "+(index+1);
+  });
+}
+
+function readEntries(type) {
+  return Array.from(document.querySelectorAll("#"+type+"-list .entry")).map(box => {
+    const data = {};
+    box.querySelectorAll("[data-key]").forEach(input => {
+      data[input.dataset.key] = input.value.trim();
+    });
+    return data;
+  });
+}
+
+function makeItem(title,subtitle,date,details) {
+  const div = document.createElement("div");
+  div.className = "resume-item";
+
+  const strong = document.createElement("strong");
+  strong.textContent = title || "Untitled";
+  div.appendChild(strong);
+
+  [subtitle,date].filter(Boolean).forEach(value => {
+    const small = document.createElement("small");
+    small.textContent = value;
+    div.appendChild(small);
+  });
+
+  if (details) {
+    const p = document.createElement("p");
+    p.textContent = details;
+    div.appendChild(p);
+  }
+
+  return div;
+}
+
+function showItems(containerId,items,creator,emptyMessage) {
+  const box = document.getElementById(containerId);
+  box.replaceChildren();
+
+  const valid = items.filter(item => Object.values(item).some(value => value));
+
+  if (!valid.length) {
+    box.textContent = emptyMessage;
+    box.className = "empty";
+    return;
+  }
+
+  box.className = "";
+  valid.forEach(item => box.appendChild(creator(item)));
+}
+
+function updateResume() {
+  document.getElementById("p-name").textContent =
+    getValue("name") || "Your Name";
+
+  document.getElementById("p-job").textContent =
+    getValue("job") || "Your Professional Title";
+
+  const contact = [
+    getValue("email"),getValue("phone"),
+    getValue("location"),getValue("website")
+  ].filter(Boolean);
+
+  document.getElementById("p-contact").textContent =
+    contact.join("  •  ") || "Email · Phone · Location";
+
+  const summary = document.getElementById("p-summary");
+  summary.textContent = getValue("summary") ||
+    "Your professional summary will appear here.";
+  summary.className = getValue("summary") ? "" : "empty";
+
+  showItems("p-education",readEntries("education"),item =>
+    makeItem(item.degree,item.school,item.year,item.details),
+    "Your education will appear here."
+  );
+
+  showItems("p-experience",readEntries("experience"),item =>
+    makeItem(item.position,item.company,item.duration,item.details),
+    "Your experience will appear here."
+  );
+
+  const skills = getValue("skills").split(",").map(s=>s.trim()).filter(Boolean);
+  const skillsBox = document.getElementById("p-skills");
+  skillsBox.replaceChildren();
+
+  if (skills.length) {
+    skillsBox.className = "";
+    const ul = document.createElement("ul");
+    skills.forEach(skill => {
+      const li = document.createElement("li");
+      li.textContent = skill;
+      ul.appendChild(li);
+    });
+    skillsBox.appendChild(ul);
+  } else {
+    skillsBox.className = "empty";
+    skillsBox.textContent = "Your skills will appear here.";
+  }
+
+  showItems("p-projects",readEntries("projects"),item =>
+    makeItem(item.title,"","",item.details),
+    "Your projects will appear here."
+  );
+}
+
+function changeTemplate() {
+  const resume = document.getElementById("resume");
+  resume.classList.remove("classic","executive");
+
+  const selected = document.getElementById("template").value;
+  if (selected !== "modern") resume.classList.add(selected);
+}
+
+document.getElementById("template").addEventListener("change",changeTemplate);
+
+simpleFields.forEach(id => {
+  document.getElementById(id).addEventListener("input",updateResume);
+});
+
+document.getElementById("photo").addEventListener("change",event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please select an image.");
+    return;
+  }
+
+  if (file.size > 3 * 1024 * 1024) {
+    alert("Please select an image smaller than 3 MB.");
+    event.target.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    photoData = reader.result;
+    const img = document.getElementById("preview-photo");
+    img.src = photoData;
+    img.style.display = "block";
+  };
+  reader.readAsDataURL(file);
+});
+
+function collectData() {
+  const data = {};
+
+  simpleFields.forEach(id => data[id] = getValue(id));
+
+  data.education = readEntries("education");
+  data.experience = readEntries("experience");
+  data.projects = readEntries("projects");
+  data.template = document.getElementById("template").value;
+  data.photo = photoData;
+
+  return data;
+}
+
+function saveDraft() {
+  try {
+    localStorage.setItem("resumecraft-draft",JSON.stringify(collectData()));
+    alert("Your resume draft has been saved in this browser.");
+  } catch(error) {
+    alert("Could not save the draft. Your browser storage may be full.");
+  }
+}
+
+function loadDraft() {
+  try {
+    const saved = localStorage.getItem("resumecraft-draft");
+    if (!saved) return;
+
+    const data = JSON.parse(saved);
+
+    simpleFields.forEach(id => {
+      if (data[id] !== undefined) {
+        document.getElementById(id).value = data[id];
+      }
+    });
+
+    ["education","experience","projects"].forEach(type => {
+      document.getElementById(type+"-list").replaceChildren();
+      (data[type] || []).forEach(item => addEntry(type,item));
+    });
+
+    if (data.template) {
+      document.getElementById("template").value = data.template;
+      changeTemplate();
+    }
+
+    if (data.photo) {
+      photoData = data.photo;
+      const img = document.getElementById("preview-photo");
+      img.src = photoData;
+      img.style.display = "block";
+    }
+
+    updateResume();
+  } catch(error) {
+    console.log("Saved draft could not be loaded.");
+  }
+}
+
+function clearForm() {
+  if (!confirm("Are you sure you want to clear all resume information?")) return;
+
+  simpleFields.forEach(id => {
+    document.getElementById(id).value = "";
+  });
+
+  ["education","experience","projects"].forEach(type => {
+    document.getElementById(type+"-list").replaceChildren();
+  });
+
+  document.getElementById("template").value = "modern";
+  document.getElementById("photo").value = "";
+  document.getElementById("preview-photo").style.display = "none";
+  photoData = "";
+
+  localStorage.removeItem("resumecraft-draft");
+  changeTemplate();
+  updateResume();
+}
+
+async function downloadPDF() {
+  if (!getValue("name")) {
+    alert("Please enter your full name before downloading.");
+    document.getElementById("name").focus();
+    return;
+  }
+
+  if (!window.html2pdf) {
+    alert("PDF service could not load. Please check your internet connection and try again.");
+    return;
+  }
+
+  const button = document.querySelectorAll('button[onclick="downloadPDF()"]');
+  button.forEach(b => {
+    b.disabled = true;
+    b.textContent = "Creating PDF...";
+  });
+
+  try {
+    const element = document.getElementById("resume");
+    const options = {
+      margin: 10,
+      filename: (getValue("name").replace(/[^a-z0-9]/gi,"-") || "Resume") + "-Resume.pdf",
+      image: {type:"jpeg",quality:0.98},
+      html2canvas: {scale:2,useCORS:true,backgroundColor:"#ffffff"},
+      jsPDF: {unit:"mm",format:"a4",orientation:"portrait"},
+      pagebreak: {mode:["css","legacy"]}
+    };
+
+    await html2pdf().set(options).from(element).save();
+
+  } catch(error) {
+    console.error(error);
+    alert("PDF generation failed. Please try again.");
+  } finally {
+    button.forEach(b => {
+      b.disabled = false;
+      b.textContent = "Download PDF";
+    });
+  }
+}
+
+loadDraft();
+
+if (!document.querySelector("#education-list .entry")) addEntry("education");
+updateResume();
+</script>
+
+</body>
+</html>
