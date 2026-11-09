@@ -4,9 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ResumeCraft is a free online resume builder. Create professional resumes, customize templates and download PDF resumes.">
-<meta name="theme-color" content="#173b70">
-<title>ResumeCraft | Free Professional Resume Builder</title>
+<meta name="description" content="ResumeCraft is a free online resume builder with eight professional templates and PDF downloads.">
+<meta name="theme-color" content="#2457d6">
+<title>ResumeCraft - Free Resume Builder</title>
 
 <style>
 :root {
@@ -15,21 +15,42 @@
   --muted:#697586;
   --light:#f4f7fc;
   --border:#e1e7f0;
-  --white:#fff;
 }
 
-* { box-sizing:border-box; margin:0; padding:0; }
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body {
   font-family:Arial,sans-serif;
-  color:var(--dark);
   background:var(--light);
+  color:var(--dark);
   line-height:1.6;
 }
 
-button,input,textarea,select { font:inherit; }
+button,input,textarea,select {
+  font:inherit;
+}
 
-button { cursor:pointer; }
+button {
+  cursor:pointer;
+  border:0;
+  border-radius:7px;
+  padding:11px 16px;
+  background:var(--primary);
+  color:white;
+  font-weight:bold;
+  font-size:13px;
+}
+
+button:hover { opacity:.9; }
+
+button:disabled {
+  opacity:.6;
+  cursor:wait;
+}
 
 header {
   background:white;
@@ -52,19 +73,34 @@ header {
 
 .logo span { color:var(--dark); }
 
-nav { display:flex; gap:17px; flex-wrap:wrap; }
+nav {
+  display:flex;
+  gap:17px;
+  flex-wrap:wrap;
+}
 
 nav a {
   color:var(--dark);
   text-decoration:none;
   font-size:13px;
-  font-weight:600;
+  font-weight:bold;
 }
 
 .hero {
   text-align:center;
   padding:55px 15px 35px;
   background:linear-gradient(135deg,#eaf1ff,#fff);
+}
+
+.hero-tag {
+  display:inline-block;
+  background:#dce8ff;
+  color:#1745a5;
+  padding:6px 15px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:15px;
 }
 
 .hero h1 {
@@ -76,20 +112,9 @@ nav a {
 .hero h1 span { color:var(--primary); }
 
 .hero p {
-  color:var(--muted);
   max-width:650px;
   margin:auto;
-}
-
-.hero-tag {
-  display:inline-block;
-  background:#dce8ff;
-  color:#1745a5;
-  border-radius:30px;
-  padding:6px 15px;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:15px;
+  color:var(--muted);
 }
 
 .container {
@@ -165,23 +190,6 @@ textarea {
   resize:vertical;
 }
 
-button {
-  border:0;
-  border-radius:7px;
-  padding:11px 16px;
-  background:var(--primary);
-  color:white;
-  font-weight:bold;
-  font-size:13px;
-}
-
-button:hover { opacity:.9; }
-
-button:disabled {
-  opacity:.6;
-  cursor:wait;
-}
-
 .secondary {
   background:#eaf0ff;
   color:var(--primary);
@@ -242,10 +250,6 @@ button:disabled {
   top:85px;
 }
 
-.preview-controls {
-  margin-bottom:15px;
-}
-
 .resume {
   background:white;
   color:#273247;
@@ -256,7 +260,7 @@ button:disabled {
 }
 
 .resume-header {
-  border-bottom:3px solid var(--primary);
+  border-bottom:3px solid #2457d6;
   padding-bottom:17px;
   margin-bottom:22px;
   display:flex;
@@ -291,6 +295,7 @@ button:disabled {
   border-radius:50%;
   border:3px solid #e2eaff;
   display:none;
+  flex-shrink:0;
 }
 
 .resume-section {
@@ -299,7 +304,7 @@ button:disabled {
 }
 
 .resume-section h3 {
-  color:var(--primary);
+  color:#2457d6;
   font-size:13px;
   letter-spacing:1px;
   text-transform:uppercase;
@@ -340,6 +345,20 @@ button:disabled {
   font-style:italic;
 }
 
+/* THEME 1: MODERN BLUE */
+#resume.modern {
+  font-family:Arial,sans-serif;
+}
+
+#resume.modern .resume-header {
+  border-bottom:3px solid #2457d6;
+}
+
+#resume.modern .resume-section h3 {
+  color:#2457d6;
+}
+
+/* THEME 2: CLASSIC PROFESSIONAL */
 #resume.classic {
   font-family:Georgia,serif;
   color:#222;
@@ -360,11 +379,12 @@ button:disabled {
   margin:0 auto 12px;
 }
 
+/* THEME 3: EXECUTIVE BLACK */
 #resume.executive .resume-header {
-  background:#17365d;
+  background:#171717;
   color:white;
   padding:24px;
-  border-bottom:5px solid #8da7c7;
+  border-bottom:5px solid #999;
 }
 
 #resume.executive .resume-header h1,
@@ -374,37 +394,122 @@ button:disabled {
 }
 
 #resume.executive .resume-section h3 {
-  color:#17365d;
-  border-bottom:2px solid #17365d;
+  color:#171717;
+  border-bottom:2px solid #171717;
+}
+
+/* THEME 4: MINIMALIST WHITE */
+#resume.minimalist {
+  font-family:Arial,sans-serif;
+  color:#333;
+}
+
+#resume.minimalist .resume-header {
+  border-bottom:1px solid #ddd;
+}
+
+#resume.minimalist .resume-section h3 {
+  color:#444;
+  border-bottom:1px solid #eee;
+  letter-spacing:2px;
+}
+
+/* THEME 5: CREATIVE GRADIENT */
+#resume.creative .resume-header {
+  background:linear-gradient(120deg,#5634b8,#c34da5);
+  padding:24px;
+  border-radius:10px;
+  border:0;
+}
+
+#resume.creative .resume-header h1,
+#resume.creative .resume-header .job,
+#resume.creative .resume-header .resume-contact {
+  color:white;
+}
+
+#resume.creative .resume-section h3 {
+  color:#8b3dca;
+  border-bottom:2px solid #e6d5f7;
+}
+
+/* THEME 6: CORPORATE GREY */
+#resume.corporate .resume-header {
+  background:#edf0f4;
+  padding:22px;
+  border-bottom:4px solid #586579;
+}
+
+#resume.corporate .resume-header h1 {
+  color:#344054;
+}
+
+#resume.corporate .resume-section h3 {
+  color:#586579;
+}
+
+/* THEME 7: ELEGANT PURPLE */
+#resume.purple .resume-header {
+  border-bottom:4px solid #7139a8;
+}
+
+#resume.purple .resume-section h3 {
+  color:#7139a8;
+  border-bottom:1px solid #d9c5eb;
+}
+
+/* THEME 8: ATS-FRIENDLY */
+#resume.ats {
+  font-family:Arial,sans-serif;
+  color:#222;
+}
+
+#resume.ats .resume-header {
+  display:block;
+  border-bottom:1px solid #222;
+}
+
+#resume.ats .profile-photo {
+  display:none !important;
+}
+
+#resume.ats .resume-section h3 {
+  color:#222;
+  border-bottom:1px solid #222;
+  letter-spacing:0;
 }
 
 .features {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:15px;
-  margin:20px 0 35px;
+  margin:25px 0 35px;
 }
 
-.feature {
+.feature,.info-section {
   background:white;
   border:1px solid var(--border);
   border-radius:10px;
   padding:20px;
 }
 
-.feature h3 { font-size:15px; margin-bottom:5px; }
-.feature p { color:var(--muted); font-size:12px; }
+.feature h3 {
+  font-size:15px;
+  margin-bottom:5px;
+}
+
+.feature p,.info-section p {
+  color:var(--muted);
+  font-size:13px;
+}
 
 .info-section {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:24px;
   margin-top:20px;
 }
 
-.info-section h2 { margin-bottom:10px; }
-.info-section p { color:var(--muted); font-size:14px; }
+.info-section h2 {
+  margin-bottom:10px;
+}
 
 footer {
   background:#14213d;
@@ -414,7 +519,10 @@ footer {
   margin-top:35px;
 }
 
-footer p { font-size:12px; color:#cbd5e1; }
+footer p {
+  font-size:12px;
+  color:#cbd5e1;
+}
 
 footer a {
   color:white;
@@ -439,33 +547,6 @@ footer a {
   .grid2 { grid-template-columns:1fr; }
   .features { grid-template-columns:1fr; }
 }
-
-@media print {
-  @page { size:A4; margin:12mm; }
-
-  body { background:white; }
-
-  header,.hero,.topbar,#editor,footer,
-  .features,.info-section,.preview-controls,
-  .preview-panel>h2,.preview-panel>.preview-note {
-    display:none!important;
-  }
-
-  .container,.workspace,.preview-panel,.panel {
-    display:block;
-    max-width:none;
-    margin:0;
-    padding:0;
-    border:0;
-    box-shadow:none;
-  }
-
-  .resume {
-    border:0;
-    padding:0;
-    min-height:0;
-  }
-}
 </style>
 </head>
 
@@ -484,7 +565,7 @@ footer a {
 <section class="hero">
   <div class="hero-tag">100% Free Resume Builder</div>
   <h1>Build Your <span>Professional Resume</span></h1>
-  <p>Create a polished resume in minutes. Add your details, choose a template, preview your work and download your PDF.</p>
+  <p>Create a polished resume in minutes. Add your details, choose from eight templates, preview your work and download your PDF.</p>
 </section>
 
 <main class="container" id="builder">
@@ -526,7 +607,7 @@ footer a {
 
   <label for="photo">Profile Photo (Optional)</label>
   <input id="photo" type="file" accept="image/*">
-  <p class="photo-note">Use a clear, professional photograph if you want one.</p>
+  <p class="photo-note">Choose an image smaller than 3 MB.</p>
 
   <div class="section-title">Professional Summary</div>
   <textarea id="summary" placeholder="Write a short introduction about your experience, strengths and career goals."></textarea>
@@ -559,17 +640,22 @@ footer a {
   <h2>Live Resume Preview</h2>
 
   <div class="preview-controls">
-    <label for="template">Choose Template</label>
+    <label for="template">Choose Your Resume Theme</label>
     <select id="template">
-      <option value="modern">Modern Blue</option>
-      <option value="classic">Classic</option>
-      <option value="executive">Executive</option>
+      <option value="modern">1. Modern Blue</option>
+      <option value="classic">2. Classic Professional</option>
+      <option value="executive">3. Executive Black</option>
+      <option value="minimalist">4. Minimalist White</option>
+      <option value="creative">5. Creative Gradient</option>
+      <option value="corporate">6. Corporate Grey</option>
+      <option value="purple">7. Elegant Purple</option>
+      <option value="ats">8. ATS-Friendly</option>
     </select>
   </div>
 
-  <p class="preview-note photo-note">Your resume updates automatically as you type.</p>
+  <p class="photo-note">Your resume updates automatically as you type.</p>
 
-  <article class="resume" id="resume">
+  <article class="resume modern" id="resume">
 
     <div class="resume-header">
       <img id="preview-photo" class="profile-photo" alt="Profile photo">
@@ -580,27 +666,27 @@ footer a {
       </div>
     </div>
 
-    <section class="resume-section" id="summary-section">
+    <section class="resume-section">
       <h3>Professional Summary</h3>
       <p id="p-summary" class="empty">Your professional summary will appear here.</p>
     </section>
 
-    <section class="resume-section" id="education-section">
+    <section class="resume-section">
       <h3>Education</h3>
       <div id="p-education" class="empty">Your education will appear here.</div>
     </section>
 
-    <section class="resume-section" id="experience-section">
+    <section class="resume-section">
       <h3>Work Experience</h3>
       <div id="p-experience" class="empty">Your experience will appear here.</div>
     </section>
 
-    <section class="resume-section" id="skills-section">
+    <section class="resume-section">
       <h3>Skills</h3>
       <div id="p-skills" class="empty">Your skills will appear here.</div>
     </section>
 
-    <section class="resume-section" id="projects-section">
+    <section class="resume-section">
       <h3>Projects & Achievements</h3>
       <div id="p-projects" class="empty">Your projects will appear here.</div>
     </section>
@@ -620,8 +706,8 @@ footer a {
     <p>Enter your information in a simple form and see your resume update instantly.</p>
   </div>
   <div class="feature">
-    <h3>🎨 Professional Templates</h3>
-    <p>Choose between modern, classic and executive resume designs.</p>
+    <h3>🎨 Eight Professional Themes</h3>
+    <p>Choose from eight different resume designs for your career.</p>
   </div>
   <div class="feature">
     <h3>📄 PDF Download</h3>
@@ -642,7 +728,7 @@ footer a {
 <section class="info-section" id="privacy">
   <h2>Privacy Policy</h2>
   <p>Your resume information is processed in your browser. Drafts can be saved in your browser's local storage. Information saved in your browser is not automatically sent to ResumeCraft. Avoid using public or shared devices for private resume information, and clear saved drafts when finished.</p>
-  <p>Third-party services, such as the PDF generation library, may load from their own providers. If advertising is added in the future, the privacy policy must be updated to explain the advertising and data practices.</p>
+  <p>Third-party services, such as the PDF generation library, may load from their own providers.</p>
 </section>
 
 </main>
@@ -687,13 +773,6 @@ const entryConfig = {
   ]
 };
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",
-    '"':"&quot;","'":"&#39;"
-  })[c]);
-}
-
 function getValue(id) {
   return document.getElementById(id).value.trim();
 }
@@ -712,7 +791,6 @@ function addEntry(type, values = {}) {
   `;
 
   entryConfig[type].forEach(([key,label]) => {
-    const id = type + "-" + key + "-" + Date.now() + "-" + Math.random().toString(36).slice(2,7);
     const value = escapeHTML(values[key] || "");
 
     if (key === "details") {
@@ -732,8 +810,19 @@ function addEntry(type, values = {}) {
   updateResume();
 }
 
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[c]);
+}
+
 function renumberEntries(type) {
   const entries = document.querySelectorAll("#" + type + "-list .entry");
+
   entries.forEach((entry,index) => {
     entry.querySelector(".entry-heading span").textContent =
       type.charAt(0).toUpperCase()+type.slice(1)+" "+(index+1);
@@ -743,9 +832,11 @@ function renumberEntries(type) {
 function readEntries(type) {
   return Array.from(document.querySelectorAll("#"+type+"-list .entry")).map(box => {
     const data = {};
+
     box.querySelectorAll("[data-key]").forEach(input => {
       data[input.dataset.key] = input.value.trim();
     });
+
     return data;
   });
 }
@@ -797,16 +888,20 @@ function updateResume() {
     getValue("job") || "Your Professional Title";
 
   const contact = [
-    getValue("email"),getValue("phone"),
-    getValue("location"),getValue("website")
+    getValue("email"),
+    getValue("phone"),
+    getValue("location"),
+    getValue("website")
   ].filter(Boolean);
 
   document.getElementById("p-contact").textContent =
-    contact.join("  •  ") || "Email · Phone · Location";
+    contact.join(" • ") || "Email · Phone · Location";
 
   const summary = document.getElementById("p-summary");
+
   summary.textContent = getValue("summary") ||
     "Your professional summary will appear here.";
+
   summary.className = getValue("summary") ? "" : "empty";
 
   showItems("p-education",readEntries("education"),item =>
@@ -821,16 +916,19 @@ function updateResume() {
 
   const skills = getValue("skills").split(",").map(s=>s.trim()).filter(Boolean);
   const skillsBox = document.getElementById("p-skills");
+
   skillsBox.replaceChildren();
 
   if (skills.length) {
     skillsBox.className = "";
     const ul = document.createElement("ul");
+
     skills.forEach(skill => {
       const li = document.createElement("li");
       li.textContent = skill;
       ul.appendChild(li);
     });
+
     skillsBox.appendChild(ul);
   } else {
     skillsBox.className = "empty";
@@ -838,17 +936,26 @@ function updateResume() {
   }
 
   showItems("p-projects",readEntries("projects"),item =>
-    makeItem(item.title,"","",item.details),
+    makeItem(item.title,"",item.duration,item.details),
     "Your projects will appear here."
   );
 }
 
 function changeTemplate() {
   const resume = document.getElementById("resume");
-  resume.classList.remove("classic","executive");
 
-  const selected = document.getElementById("template").value;
-  if (selected !== "modern") resume.classList.add(selected);
+  resume.classList.remove(
+    "modern",
+    "classic",
+    "executive",
+    "minimalist",
+    "creative",
+    "corporate",
+    "purple",
+    "ats"
+  );
+
+  resume.classList.add(document.getElementById("template").value);
 }
 
 document.getElementById("template").addEventListener("change",changeTemplate);
@@ -863,6 +970,7 @@ document.getElementById("photo").addEventListener("change",event => {
 
   if (!file.type.startsWith("image/")) {
     alert("Please select an image.");
+    event.target.value = "";
     return;
   }
 
@@ -873,12 +981,15 @@ document.getElementById("photo").addEventListener("change",event => {
   }
 
   const reader = new FileReader();
+
   reader.onload = () => {
     photoData = reader.result;
+
     const img = document.getElementById("preview-photo");
     img.src = photoData;
     img.style.display = "block";
   };
+
   reader.readAsDataURL(file);
 });
 
@@ -898,7 +1009,11 @@ function collectData() {
 
 function saveDraft() {
   try {
-    localStorage.setItem("resumecraft-draft",JSON.stringify(collectData()));
+    localStorage.setItem(
+      "resumecraft-draft",
+      JSON.stringify(collectData())
+    );
+
     alert("Your resume draft has been saved in this browser.");
   } catch(error) {
     alert("Could not save the draft. Your browser storage may be full.");
@@ -920,22 +1035,32 @@ function loadDraft() {
 
     ["education","experience","projects"].forEach(type => {
       document.getElementById(type+"-list").replaceChildren();
+
       (data[type] || []).forEach(item => addEntry(type,item));
     });
 
     if (data.template) {
-      document.getElementById("template").value = data.template;
-      changeTemplate();
+      const validThemes = [
+        "modern","classic","executive","minimalist",
+        "creative","corporate","purple","ats"
+      ];
+
+      if (validThemes.includes(data.template)) {
+        document.getElementById("template").value = data.template;
+      }
     }
 
     if (data.photo) {
       photoData = data.photo;
+
       const img = document.getElementById("preview-photo");
       img.src = photoData;
       img.style.display = "block";
     }
 
+    changeTemplate();
     updateResume();
+
   } catch(error) {
     console.log("Saved draft could not be loaded.");
   }
@@ -954,10 +1079,15 @@ function clearForm() {
 
   document.getElementById("template").value = "modern";
   document.getElementById("photo").value = "";
-  document.getElementById("preview-photo").style.display = "none";
+
+  const img = document.getElementById("preview-photo");
+  img.removeAttribute("src");
+  img.style.display = "none";
+
   photoData = "";
 
   localStorage.removeItem("resumecraft-draft");
+
   changeTemplate();
   updateResume();
 }
@@ -974,21 +1104,33 @@ async function downloadPDF() {
     return;
   }
 
-  const button = document.querySelectorAll('button[onclick="downloadPDF()"]');
-  button.forEach(b => {
-    b.disabled = true;
-    b.textContent = "Creating PDF...";
+  const buttons = document.querySelectorAll('button[onclick="downloadPDF()"]');
+
+  buttons.forEach(button => {
+    button.disabled = true;
+    button.textContent = "Creating PDF...";
   });
 
   try {
     const element = document.getElementById("resume");
+
     const options = {
       margin: 10,
-      filename: (getValue("name").replace(/[^a-z0-9]/gi,"-") || "Resume") + "-Resume.pdf",
+      filename: getValue("name").replace(/[^a-z0-9]/gi,"-") + "-Resume.pdf",
       image: {type:"jpeg",quality:0.98},
-      html2canvas: {scale:2,useCORS:true,backgroundColor:"#ffffff"},
-      jsPDF: {unit:"mm",format:"a4",orientation:"portrait"},
-      pagebreak: {mode:["css","legacy"]}
+      html2canvas: {
+        scale:2,
+        useCORS:true,
+        backgroundColor:"#ffffff"
+      },
+      jsPDF: {
+        unit:"mm",
+        format:"a4",
+        orientation:"portrait"
+      },
+      pagebreak: {
+        mode:["css","legacy"]
+      }
     };
 
     await html2pdf().set(options).from(element).save();
@@ -996,17 +1138,23 @@ async function downloadPDF() {
   } catch(error) {
     console.error(error);
     alert("PDF generation failed. Please try again.");
+
   } finally {
-    button.forEach(b => {
-      b.disabled = false;
-      b.textContent = "Download PDF";
+    buttons.forEach(button => {
+      button.disabled = false;
+      button.textContent = "Download PDF";
     });
   }
 }
 
+// Start the application
 loadDraft();
 
-if (!document.querySelector("#education-list .entry")) addEntry("education");
+if (!document.querySelector("#education-list .entry")) {
+  addEntry("education");
+}
+
+changeTemplate();
 updateResume();
 </script>
 
